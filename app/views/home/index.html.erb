@@ -1,0 +1,14 @@
+<html>
+<head><title> </title></head>
+
+<body>
+	<table id="videos">
+		<% @videos.each do |video| %>
+			<tr>
+				<td><%= link_to video.name, :controller => "offence_report", :action => "view", :id => video.id %></td>
+				<td>View Count = <%= get_view_count(video) %></td>
+			</tr>	
+		<% end %>
+	</table>
+</body>
+</html>
