@@ -11,4 +11,9 @@ module ApplicationHelper
     video_id = video.youtube_link.split("=").last
     "http://www.youtube.com/v/" + video_id + "?enablejsapi=1&playerapiid=ytplayer&version=3"
   end
+  
+  def no_of_offences(video)
+    result = video.offences.group(:time).count
+    result.size
+  end
 end

@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120716065049) do
 
   create_table "offences", :force => true do |t|
-    t.string  "ip",        :null => false
-    t.integer "videos_id", :null => false
+    t.string  "ip",       :null => false
+    t.integer "video_id"
     t.integer "time"
   end
 

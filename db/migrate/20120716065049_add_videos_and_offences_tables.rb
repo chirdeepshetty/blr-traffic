@@ -7,7 +7,7 @@ class AddVideosAndOffencesTables < ActiveRecord::Migration
     
     create_table :offences do |t|
       t.string :ip, :null=>false
-      t.references :videos, :null=>false
+      t.references :video
       t.integer :time
     end
   end
