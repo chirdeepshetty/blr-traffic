@@ -61,4 +61,6 @@ BlrTraffic::Application.routes.draw do
   match "/ReportOffence/:id" => "offence_report#view"
   match "/offence/:id/:time" => "offence_report#report"
   
+  resources :feedback, :only => [:index, :new, :create]
+  
 end

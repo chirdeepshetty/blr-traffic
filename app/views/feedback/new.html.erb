@@ -1,0 +1,27 @@
+<div id="saved" background-color:"yellow">
+	<%= flash[:saved] %>
+</div>	
+
+<div id="feedback_form">
+	<%= form_for(:feedback, :url => {:action => :create}) do |form| %>
+		<p>
+			<%= form.label :name %>
+			<%= form.text_field :name, :placeholder => "Your Name" %>
+		</p>
+		
+		<p>
+			<%= form.label :email %>
+			<%= form.text_field :email, :placeholder => "Your email" %>
+		</p>	
+	
+		<p>
+			<%= form.label :comment %>
+			<%= form.text_area :comment, :rows => 4, :cols => 40 %>
+		</p>
+		
+		<p>
+			<%= form.submit "Submit" %>
+		</p>
+	<% end %>
+	
+</div>

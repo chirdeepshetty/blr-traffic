@@ -1,0 +1,19 @@
+<div id="feedbacks">
+	<% @feedbacks.each do |feedback| %>
+		<div id="feedback <%= feedback.id %> ">
+			<p>
+				From : <%= feedback.name %>
+			</p>	
+			<p>
+				email : <%= feedback.email %>
+			</p>
+			<p>
+				ip : <%= feedback.ip %>
+			</p>
+			<p>
+				<%= feedback.comment %>
+			</p>		
+		</div>
+		<hr/>	
+	<% end %>
+</div>	
