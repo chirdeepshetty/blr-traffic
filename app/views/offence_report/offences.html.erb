@@ -1,0 +1,25 @@
+<%= javascript_tag do -%>
+
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+	  ['Time', 'Offences Reported'],
+	  <% @offences.each do |k, v| %>
+		[<%= k %>, <%= v %>],
+      <% end %>
+	  ]);
+
+
+    var options = {
+      title: 'Offences'
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('offences_chart'));
+    chart.draw(data, options);
+  }
+<% end -%>
+
+
+<div id="offences_chart">
+</div>
