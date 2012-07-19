@@ -5,9 +5,18 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem "mysql"
-gem "mysql2", "~> 0.3.11"
+
 gem "httparty", "~> 0.8.3"
+
+group :development, :test do
+  gem "mysql"
+  gem "mysql2", "~> 0.3.11"
+end
+
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 
 
 # Gems used only for assets and not required
