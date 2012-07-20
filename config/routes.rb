@@ -57,13 +57,10 @@ BlrTraffic::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   root :to => "home#index"
-  
-  
-  match "/ReportOffence/:id" => "offence_report#view"
-  match "/offence/:id/:time" => "offence_report#report"
+
   match "/offences/:id" => "offence_report#offences"
   
   resources :feedback, :only => [:index,:new, :create]
-  resources :video, :only => [:index, :new, :create]
+  resources :video, :only => [:index, :new, :create, :destroy]
   
 end

@@ -13,4 +13,11 @@ class VideoController < ApplicationController
   def index
     @videos = Video.all
   end
+  
+  def destroy
+    @video = Video.find(params[:id])
+    @video.destroy
+    flash[:saved] = "Your video has been deleted"
+    redirect_to :action => :index
+  end
 end

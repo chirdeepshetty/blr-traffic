@@ -8,10 +8,8 @@
 				youtube : <%= video.youtube_link %>
 			</p>	
 			<p>	
-			<%= form_for :video, :html => {:method => :delete} do |form| %>
-			  <%= form.hidden_field :id,  :value => video.id %>
-			  <%= form.submit 'delete' %>
-			<% end %>
+			<%= button_to "Delete", video_path(video), :method => "delete" %>	
+
 			</p>
 		</div>
 		<hr/>	
