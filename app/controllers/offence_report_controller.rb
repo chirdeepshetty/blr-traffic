@@ -8,7 +8,7 @@ class OffenceReportController < ApplicationController
   
   def offences
     video = Video.find(params[:id]) || not_found
-    @offences = video.offences.group(:time).count
+    @offences = video.offences.order(:time).group(:time).count
   end
   
   private
