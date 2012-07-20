@@ -59,6 +59,7 @@ BlrTraffic::Application.routes.draw do
   root :to => "home#index"
 
   match "/offences/:id" => "offence_report#offences"
+  match "/offence/:id/:time" => "offence_report#report"
   
   resources :feedback, :only => [:index,:new, :create]
   resources :video, :only => [:index, :new, :create, :destroy]
