@@ -1,0 +1,22 @@
+<div id="saved" background-color:"yellow">
+	<%= flash[:saved] %>
+</div>	
+
+<div id="video_form">
+	<%= form_for(:video, :url => {:action => :create}) do |form| %>
+		<p>
+			<%= form.label :name %>
+			<%= form.text_field :name, :placeholder => "Video name" %>
+		</p>
+		
+		<p>
+			<%= form.label :youtube_link %>
+			<%= form.text_field :youtube_link, :placeholder => "youtube link" %>
+		</p>	
+		
+		<p>
+			<%= form.submit "Submit" %>
+		</p>
+	<% end %>
+	
+</div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>The Bangalore Traffic Experiment</title>	
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" %>
@@ -11,6 +12,20 @@
 
 
 <body>
+	    <div class="navbar navbar-fixed-top">
+	      <div class="navbar-inner">
+	        <div class="container">
+	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </a>
+	          <a class="brand" href="#">The Bangalore Traffic Experiment</a>
+	          <div class="nav-collapse">
+	          </div><!--/.nav-collapse -->
+	        </div>
+	      </div>
+	    </div>
 
 <%= yield %>
 

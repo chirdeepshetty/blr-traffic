@@ -1,0 +1,51 @@
+<%= javascript_tag do %>
+	
+	function onSubmit(){
+		$("#saved").text("Your feedback has been entered into our system");
+		$(".feedback_form").submit();	
+	};
+	
+<% end %>
+
+
+<div class="span5 Feedback">
+
+	<div id="feedback_form">
+		<%= form_for(:feedback, :url => {:controller => :feedback, :action => :create}, :remote => true, :class => "form-horizontal", :id => "feedback_form") do |form| %>
+		<legend>Feedback</legend>
+		<div id="saved"></div>
+
+	  	<fieldset>
+			<div class="control-group">
+			  <%= form.label :name, :id => "input01", :class => "control-label" %>
+			  <div class="controls">
+				<%= form.text_field :name, :id => "input01", :class => "input-xlarge", :placeholder => "anonymous" %>
+		      </div>
+		    </div>
+	
+			<div class="control-group">
+			  <%= form.label :name, :id => "input02", :class => "control-label" %>
+			  <div class="controls">
+				<%= form.text_field :name, :id => "input02", :class => "input-xlarge", :placeholder => "yourmail@example.com" %>
+		      </div>
+		    </div>
+	
+		    <div class="control-group">
+		      <%= form.label :comment %>
+		      <div class="controls">
+		        <%= form.text_area :comment, :rows => 3, :id => "textarea" %>
+		      </div>
+		    </div>
+	    	<div class="form-actions">
+				<%= form.submit "Submit", :onClick => "onSubmit();" %>
+
+			</div>
+		</fieldset>
+		
+		<% end %>
+
+	</div>
+
+</div>
+
+

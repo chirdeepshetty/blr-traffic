@@ -1,11 +1,8 @@
 class HomeController < ApplicationController
   
   def index
-    @videos = Video.all
-  end
-  
-  def about
-    
+    @video = Video.first
+    @feedback = Feedback.new
   end
   
 end

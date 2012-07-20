@@ -1,15 +1,74 @@
-<html>
-<head><title> </title></head>
+<%= javascript_tag do -%>
+	var ytplayer;
+	
+	function onYouTubePlayerReady(playerId) {
+		ytplayer = document.getElementById("myytplayer");
+	}
 
-<body>
-	<table id="videos">
-		<% @videos.each do |video| %>
-			<tr>
-				<td><%= link_to video.name, :controller => "offence_report", :action => "view", :id => video.id %></td>
-				<td>View Count = <%= get_view_count(video) %></td>
-				<td>No. of Offences = <%= no_of_offences(video) %>
-			</tr>	
-		<% end %>
-	</table>
-</body>
-</html>
+	function reportOffence(url){
+		var time_of_offence = ytplayer.getCurrentTime();
+		var url = "/offence/" + <%= @video.id %> + "/" + time_of_offence;
+		$.post(url, function(data) {
+		  var offences ="<li><span class=\"label label-important\">" +time_of_offence + "</span></li>";
+		  $('#reportedOffences').append(offences);
+		});
+	}
+
+	var params = { allowScriptAccess: "always" };
+    var atts = { id: "myytplayer" };
+    swfobject.embedSWF("<%= video_js_link(@video) %>",
+                       "ytapiplayer", "600", "400", "8", null, null, params, atts);
+
+<% end -%>
+
+
+<div class="container">
+	<div class="row hero-section">
+		<div class="span12">
+			<div class="tabbable tabs-left">
+    			<ul class="nav nav-tabs">
+  				    <li class="active"><a href="#DemoTab" data-toggle="tab">Demo</a></li>
+   				   <li><a href="#ReportTab" data-toggle="tab">Play</a></li>
+   				 </ul>
+		        <div class="tab-content">
+		          <div class="tab-pane active" id="#ReportTab">
+		            <div class="row">
+		            	<div class="span5">
+		            		<div class="video" id="ytapiplayer"></div>
+		            	</div>
+		            	<div class="span4 report">
+                  <div class="action">
+
+                    <button class="btn btn-primary btn-large" onClick="reportOffence();return false;">Catch me!</button>
+                  </div>
+		            	</div>
+		            </div>
+              <div class="row">
+                <div class="time">
+                  <ul id="reportedOffences">
+
+                  </ul>
+                </div>
+              </div>
+		          </div>
+		          <div class="tab-pane" id="#DemoTab">
+		          </div>
+		        </div>
+		      </div>
+		</div>
+	</div>
+	<div class="border"></div>
+  <div class="row">
+	
+  	<%= render :partial => "about" %>
+
+  	<%= render :partial => "feedback" %>
+  </div>
+  <hr>
+
+  <footer>
+    <p>&copy; Control Room 2012</p>
+  </footer>
+</div>
+	
+	

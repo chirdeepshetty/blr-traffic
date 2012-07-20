@@ -1,0 +1,19 @@
+<div id="video">
+	<% @videos.each do |video| %>
+		<div id="video <%= video.id %> ">
+			<p>
+				Video : <%= video.name %>
+			</p>	
+			<p>
+				youtube : <%= video.youtube_link %>
+			</p>	
+			<p>	
+			<%= form_for :video, :html => {:method => :delete} do |form| %>
+			  <%= form.hidden_field :id,  :value => video.id %>
+			  <%= form.submit 'delete' %>
+			<% end %>
+			</p>
+		</div>
+		<hr/>	
+	<% end %>
+</div>
